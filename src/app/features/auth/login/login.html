@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evolua - Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <main class="login-container">
+        <!-- Lado Esquerdo: Formulário -->
+        <section class="form-section">
+            <div class="form-wrapper">
+                <header class="form-header">
+                    <h1>Bem-vindo ao <span class="brand">Evolua</span></h1>
+                    <p>Sua jornada fitness começa aqui.</p>
+                </header>
+
+                <form class="login-form" [formGroup]="form" (ngSubmit)="entrar()">
+                    <div class="input-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" placeholder="Digite seu e-mail" required formControlName="email">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="password">Senha</label>
+                        <input type="password" id="password" placeholder="Digite sua senha" required
+                            formControlName="senha">
+                    </div>
+
+                    <div class="form-options">
+                        <a href="#" class="forgot-password">Esqueceu minha senha?</a>
+                    </div>
+
+                    <button type="submit" class="btn-login">Entrar</button>
+
+                    <div class="form-footer">
+                        <p>Não tem uma conta? <a href="#">Cadastre-se</a></p>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Lado Direito: Imagem com Degradê -->
+        <section class="image-section">
+            <div class="overlay"></div>
+            <!-- <img src="assets/images/login/login-image.png" alt="Evolua Training" class="login-image" /> -->
+            <div class="image-content">
+                <h2>Evolua seu corpo</h2>
+                <p>Acompanhe seu progresso e alcance seus objetivos.</p>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>

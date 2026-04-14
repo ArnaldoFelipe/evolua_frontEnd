@@ -1,1 +1,22 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+    --bg-color: #F0F4F8; /* Branco Gelo */
+    --primary-color: #00CED1; /* Azul Ciano */
+    --accent-color: #00E5FF; /* Azul Ciano Vibrante */
+    --text-color: #2C3E50;
+    --input-border: #CBD5E0;
+    --input-focus: #00CED1;
+    --white: #FFFFFF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    min-height: 100vh;
+    margin: 0;
+}
