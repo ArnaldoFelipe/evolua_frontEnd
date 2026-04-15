@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LoginRequest, LoginResponse } from '../models/auth.model';
 import { Observable, tap } from 'rxjs';
-import { Token } from '@angular/compiler';
+
 
 
 @Injectable({
@@ -31,6 +31,6 @@ export class AuthService {
   }
 
   isAuthenticated(): boolean{
-    return !!this.getToken;
+    return !!this.getToken();
   }
 }

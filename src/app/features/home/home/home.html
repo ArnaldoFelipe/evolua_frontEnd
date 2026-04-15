@@ -1,0 +1,150 @@
+<!-- Botão Hamburguer para Abrir Sidebar -->
+<button class="sidebar-toggle" aria-label="Abrir menu">
+    <span class="toggle-icon">☰</span>
+</button>
+
+<!-- Overlay Escuro (para fechar a sidebar ao clicar fora) -->
+<div class="sidebar-overlay"></div>
+
+<!-- Barra de Navegação Lateral -->
+<nav class="sidebar">
+    <div class="sidebar-header">
+        <div class="sidebar-brand">
+            <span class="brand-icon">💪</span>
+            <span class="brand-text">Evolua</span>
+        </div>
+        <button class="sidebar-close" aria-label="Fechar menu">×</button>
+    </div>
+
+    <ul class="sidebar-menu">
+        <li class="menu-item active">
+            <a href="#" class="menu-link">
+                <span class="menu-icon">🏠</span>
+                <span class="menu-text">Home</span>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="#" class="menu-link">
+                <span class="menu-icon">🏋️</span>
+                <span class="menu-text">Treino</span>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="#" class="menu-link">
+                <span class="menu-icon">🥗</span>
+                <span class="menu-text">Dieta</span>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="#" class="menu-link">
+                <span class="menu-icon">👤</span>
+                <span class="menu-text">Perfil</span>
+            </a>
+        </li>
+    </ul>
+
+    <div class="sidebar-footer">
+        <a href="#" class="logout-link">
+            <span class="menu-icon">🚪</span>
+            <span class="menu-text">Sair</span>
+        </a>
+    </div>
+</nav>
+
+<main class="home-container">
+    <!-- Seção de Saudação -->
+    <header class="home-header">
+        <h1 class="greeting">Olá, <span class="user-name">{{usuario?.nome}}</span>!</h1>
+        <p class="motivational-message">Acompanhe sua evolução física.</p>
+    </header>
+
+    <!-- Seção de Cards Informativos -->
+    <section class="cards-section">
+        <div class="cards-grid">
+            <!-- Card Peso -->
+            <div class="info-card">
+                <span class="card-icon">⚖️</span>
+                <h3 class="card-title">Peso</h3>
+                <p class="card-value">{{usuario?.peso}}<span class="card-unit">kg</span></p>
+            </div>
+
+            <!-- Card Altura -->
+            <div class="info-card">
+                <span class="card-icon">📏</span>
+                <h3 class="card-title">Altura</h3>
+                <p class="card-value">{{usuario?.altura}}<span class="card-unit">m</span></p>
+            </div>
+
+            <!-- Card IMC -->
+            <div class="info-card">
+                <span class="card-icon">📊</span>
+                <h3 class="card-title">IMC</h3>
+                <p class="card-value">{{usuario?.imc}}</p>
+            </div>
+
+            <!-- Card Classificação IMC -->
+            <div class="info-card">
+                <span class="card-icon">🏷️</span>
+                <h3 class="card-title">Classificação</h3>
+                <p class="card-value classification">{{usuario?.classificaoImc}}</p>
+            </div>
+
+            <!-- Card Idade -->
+            <div class="info-card">
+                <span class="card-icon">🎂</span>
+                <h3 class="card-title">Idade</h3>
+                <p class="card-value">{{usuario?.idade}} <span class="card-unit">anos</span></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Card de Destaque - Chat Arnold -->
+    <section class="arnold-section">
+        <div class="arnold-card">
+            <div class="arnold-avatar">
+                <span class="avatar-icon">💪</span>
+            </div>
+            <div class="arnold-content">
+                <h2 class="arnold-title">Arnold - Seu Assistente Fitness</h2>
+                <p class="arnold-description">
+                    Precisa de motivação ou tem dúvidas sobre seu treino? 
+                    Converse com o Arnold e tire suas dúvidas!
+                </p>
+                <button class="btn-arnold">Abrir Chat</button>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Botão Flutuante do Arnold (Chat estilo Copilot) -->
+<div class="arnold-float-button">
+    <button class="arnold-trigger" aria-label="Abrir Arnold">
+        <span class="trigger-icon">💪</span>
+    </button>
+</div>
+
+<!-- Container do Chat Arnold (inicialmente escondido) -->
+<div class="arnold-chat-container">
+    <div class="chat-header">
+        <div class="chat-header-info">
+            <span class="chat-avatar">💪</span>
+            <div class="chat-header-text">
+                <h3>Arnold</h3>
+                <p>Seu Assistente Fitness</p>
+            </div>
+        </div>
+        <button class="chat-close" aria-label="Fechar chat">×</button>
+    </div>
+    <div class="chat-messages">
+        <div class="message bot-message">
+            <span class="message-avatar">💪</span>
+            <div class="message-content">
+                <p>Olá! Sou o Arnold, seu assistente fitness! Como posso te ajudar hoje?</p>
+            </div>
+        </div>
+    </div>
+    <div class="chat-input-area">
+        <input type="text" class="chat-input" placeholder="Digite sua mensagem...">
+        <button class="chat-send">Enviar</button>
+    </div>
+</div>
