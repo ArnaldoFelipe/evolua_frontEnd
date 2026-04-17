@@ -12,7 +12,7 @@ export interface Usuario {
     peso: number;
     altura: number;
     imc: number;
-    classificaoImc: ClassificacaoImc;
+    classificacaoImc: ClassificacaoImc;
     dataNascimento: string;
     idade: number
 }

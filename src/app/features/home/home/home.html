@@ -1,19 +1,23 @@
 <!-- Botão Hamburguer para Abrir Sidebar -->
-<button class="sidebar-toggle" aria-label="Abrir menu">
+<button class="sidebar-toggle" (click)="toggleSideBar()" aria-label="Abrir menu">
     <span class="toggle-icon">☰</span>
 </button>
 
 <!-- Overlay Escuro (para fechar a sidebar ao clicar fora) -->
-<div class="sidebar-overlay"></div>
+<div 
+class="sidebar-overlay"
+*ngIf="isSideBarOpen"
+(click)="toggleSideBar()">
+</div>
 
 <!-- Barra de Navegação Lateral -->
-<nav class="sidebar">
+<nav class="sidebar" [class.open]="isSideBarOpen">
     <div class="sidebar-header">
         <div class="sidebar-brand">
             <span class="brand-icon">💪</span>
             <span class="brand-text">Evolua</span>
         </div>
-        <button class="sidebar-close" aria-label="Fechar menu">×</button>
+        <button class="sidebar-close" (click)="toggleSideBar()" aria-label="Fechar menu">×</button>
     </div>
 
     <ul class="sidebar-menu">
@@ -44,7 +48,7 @@
     </ul>
 
     <div class="sidebar-footer">
-        <a href="#" class="logout-link">
+        <a class="logout-link" (click)="logout()">
             <span class="menu-icon">🚪</span>
             <span class="menu-text">Sair</span>
         </a>
@@ -86,7 +90,7 @@
             <div class="info-card">
                 <span class="card-icon">🏷️</span>
                 <h3 class="card-title">Classificação</h3>
-                <p class="card-value classification">{{usuario?.classificaoImc}}</p>
+                <p class="card-value classification">{{usuario?.classificacaoImc}}</p>
             </div>
 
             <!-- Card Idade -->
