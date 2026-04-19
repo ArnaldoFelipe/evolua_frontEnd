@@ -114,7 +114,7 @@ class="sidebar-overlay"
                     Precisa de motivação ou tem dúvidas sobre seu treino? 
                     Converse com o Arnold e tire suas dúvidas!
                 </p>
-                <button class="btn-arnold">Abrir Chat</button>
+                <button class="btn-arnold" (click)="toggleChat()">Abrir Chat</button>
             </div>
         </div>
     </section>
@@ -122,13 +122,13 @@ class="sidebar-overlay"
 
 <!-- Botão Flutuante do Arnold (Chat estilo Copilot) -->
 <div class="arnold-float-button">
-    <button class="arnold-trigger" aria-label="Abrir Arnold">
+    <button class="arnold-trigger" (click)="toggleChat()" aria-label="Abrir Arnold">
         <span class="trigger-icon">💪</span>
     </button>
 </div>
 
 <!-- Container do Chat Arnold (inicialmente escondido) -->
-<div class="arnold-chat-container">
+<div class="arnold-chat-container" [class.open]="isChatOpen">
     <div class="chat-header">
         <div class="chat-header-info">
             <span class="chat-avatar">💪</span>
@@ -137,18 +137,27 @@ class="sidebar-overlay"
                 <p>Seu Assistente Fitness</p>
             </div>
         </div>
-        <button class="chat-close" aria-label="Fechar chat">×</button>
+        <button class="chat-close" (click)="toggleChat()" aria-label="Fechar chat">×</button>
     </div>
     <div class="chat-messages">
-        <div class="message bot-message">
-            <span class="message-avatar">💪</span>
+        <div 
+        *ngFor="let msg of mensagens" 
+        class="message" 
+        [ngClass]="msg.tipo === 'bot' ? 'bot-message': 'user-message'">
+            <span class="message-avatar">
+                {{ msg.tipo === 'bot' ? '💪' : '🧑' }}
+            </span>
             <div class="message-content">
-                <p>Olá! Sou o Arnold, seu assistente fitness! Como posso te ajudar hoje?</p>
+                <p>{{msg.texto}}</p>
             </div>
         </div>
     </div>
     <div class="chat-input-area">
-        <input type="text" class="chat-input" placeholder="Digite sua mensagem...">
-        <button class="chat-send">Enviar</button>
+        <input 
+        type="text"
+        [(ngModel)]="mensagem" 
+        class="chat-input" 
+        placeholder="Digite sua mensagem...">
+        <button class="chat-send" (click)="enviarMensagem()">Enviar</button>
     </div>
 </div>

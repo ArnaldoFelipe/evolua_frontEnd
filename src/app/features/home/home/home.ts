@@ -5,10 +5,12 @@ import { CommonModule } from '@angular/common';
 import { AuthService } from '../../../core/services/auth';
 import { Router } from '@angular/router';
 import { ChangeDetectorRef } from '@angular/core';
+import { ArnoldService } from '../../../core/services/arnold-service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
@@ -20,11 +22,18 @@ export class Home implements OnInit{
   isChatOpen = false;
   mensagem = '';
   erroMessage = '';
+  mensagens: {texto: string; tipo : 'user' | 'bot'}[] = [
+    {
+      texto: 'Olá! Sou o Arnold, seu assistente fitness! Como posso te ajudar hoje?',
+      tipo: 'bot'
+    }
+  ];
 
   constructor(private usuarioService: UsuarioService,
               private authService: AuthService,
               private router: Router,
-              private cd: ChangeDetectorRef){}
+              private cd: ChangeDetectorRef,
+              private arnoldService: ArnoldService){}
 
   ngOnInit(): void{
     this.usuarioService.getUsuarioLogado().subscribe({
@@ -59,5 +68,32 @@ export class Home implements OnInit{
 
   enviarMensagem(): void{
     if(!this.mensagem.trim()) return;
+
+    const texto = this.mensagem
+
+    this.mensagens.push({
+      texto,
+      tipo: 'user'
+    });
+
+    this.mensagem = '';
+
+    this.arnoldService.chat(texto).subscribe({
+      next: (res) => {
+        this.mensagens.push({
+          texto: res.mensagem,
+          tipo: 'bot'
+        });
+
+        this.cd.detectChanges();
+        console.log('Reposta completa', res)
+      },
+      error: ()=> {
+        this.mensagens.push({
+          texto: 'Erro ao falar com Arnold',
+          tipo: 'bot'
+        });
+      }
+    });
   }
 }
