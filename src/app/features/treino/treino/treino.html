@@ -1,0 +1,47 @@
+<main class="workout-container">
+    <!-- Seção de Cabeçalho de Treino -->
+    <header class="workout-header">
+        <h1 class="workout-greeting">Força e Foco 🏋️‍♂️</h1>
+        <p class="workout-subtitle">Confira sua estratégia de hoje para dominar o treino.</p>
+        <h3>Objetivo <span class="objetivo">{{plano?.objetivoFitness}}</span></h3>
+    </header>
+
+    <!-- Grade de Cards de Treino (Dias da Semana) -->
+    <section class="workout-grid">
+        <!-- Card de Treino (Exemplo: Segunda) -->
+        <div 
+        class="workout-card"
+        *ngFor="let dia of plano?.dias"
+        (click)="toggleDia(dia)"
+        [class.active]="diaAberto === dia">
+            <div class="card-header">
+                <div class="day-info">
+                    <span class="day-name">{{dia.dia}}</span>
+                    <h3 class="muscle-group">{{dia.grupoMuscular}}</h3>
+                </div>
+            </div>
+
+            <!-- Detalhes do Treino (Expandido/Lista) -->
+            <div 
+            class="workout-details"
+            *ngIf="diaAberto === dia">
+            <h4 class="exercise-name">Volume do treino <span>{{plano?.volumeTreino}}</span></h4>
+                <ul class="exercise-list">
+                    <li class="exercise-item" *ngFor="let treino of dia.treinos">
+                        <div class="exercise-info">
+                            <span class="exercise-name">{{treino.nomeExercicio}}</span>
+                            <span class="exercise-specs">{{treino.series}} séries x {{treino.repeticoes}} reps</span>
+                        </div>
+                        <span class="exercise-icon">💪</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div
+            class="workout-details-collapsed"
+            *ngIf="diaAberto !== dia">
+                <p>Toque para ver os exercicios</p>
+            </div>
+        </div>
+    </section>
+</main>

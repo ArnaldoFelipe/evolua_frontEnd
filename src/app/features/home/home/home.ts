@@ -3,14 +3,14 @@ import { UsuarioService } from '../../../core/services/usuarioService';
 import { Usuario } from '../../../core/models/usuario';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../../core/services/auth';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ChangeDetectorRef } from '@angular/core';
 import { ArnoldService } from '../../../core/services/arnold-service';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterLink],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
