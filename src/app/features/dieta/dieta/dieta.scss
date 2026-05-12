@@ -1,0 +1,164 @@
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+/* ======================================== 
+   ESTILOS DA PÁGINA DE DIETA 
+   ======================================== */
+
+.diet-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.diet-header {
+  margin-bottom: 40px;
+}
+
+.diet-greeting {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--text-color);
+  margin-bottom: 10px;
+}
+
+.objetivo {
+  color: var(--primary-color);
+}
+
+.diet-subtitle {
+  font-size: 1.1rem;
+  color: #718096;
+}
+
+/* Grid de Dieta */
+.diet-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Card de Dieta Base */
+.diet-card {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid #E2E8F0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.diet-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  border-color: var(--primary-color);
+}
+
+/* Estado Ativo (Hoje) */
+.diet-card.active {
+  border-left: 6px solid var(--primary-color);
+  background: #fdfdfd;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.meal-info .meal-time {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #718096;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.meal-info .meal-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin-top: 4px;
+}
+
+/* Detalhes da Dieta (Lista) */
+.diet-details {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid #F7FAFC;
+  animation: slideDown 0.4s ease-out;
+}
+
+.food-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.food-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background: #F8FAFC;
+  border-radius: 12px;
+  transition: background 0.2s;
+}
+
+.food-item:hover {
+  background: #EDF2F7;
+}
+
+.food-name {
+  display: block;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.food-specs {
+  font-size: 0.85rem;
+  color: var(--primary-color);
+  font-weight: 700;
+  margin-top: 2px;
+  display: block;
+}
+
+.food-icon {
+  font-size: 1.2rem;
+  opacity: 0.5;
+}
+
+/* Collapsed State Info */
+.diet-details-collapsed {
+  margin-top: 12px;
+  font-size: 0.85rem;
+  color: #A0AEC0;
+  font-weight: 500;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .diet-container {
+    padding: 20px 16px;
+  }
+  
+  .diet-greeting {
+    font-size: 2rem;
+  }
+  
+  .meal-info .meal-name {
+    font-size: 1.25rem;
+  }
+}

@@ -1,0 +1,76 @@
+<app-sidebar></app-sidebar>
+
+<main class="profile-container">
+    <!-- Cabeçalho do Perfil -->
+    <header class="profile-header">
+        <h1 class="profile-title">Meu Perfil 👤</h1>
+        <p class="profile-subtitle">Gerencie suas informações pessoais e preferências de saúde.</p>
+    </header>
+
+    <!-- Card do Formulário de Perfil -->
+    <section class="profile-card" *ngIf="usuario">
+        <form class="profile-form">
+            <div class="form-grid">
+                <!-- Informações Pessoais -->
+                <div class="form-group">
+                    <label for="name">Nome Completo</label>
+                    <input type="text" id="name" placeholder="Seu nome completo" [(ngModel)]="usuario.nome" name="name" [disabled]="!modoEdicao">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" placeholder="Email" [(ngModel)]="usuario.email" name="email" [disabled]="!modoEdicao">
+                </div>
+
+                <div class="form-group">
+                    <label for="idade">Idade</label>
+                    <input type="text" id="idade" placeholder="Idade" [(ngModel)]="usuario.idade" name="idade" [disabled]="!modoEdicao">
+                </div>
+
+                <!-- <div class="form-group">
+                    <label for="altura">Altura</label>
+                    <input type="text" id="altura" placeholder="Altura" [(ngModel)]="usuario?.altura" name="phone">
+                </div> -->
+
+                <!-- Dados Físicos/Objetivos -->
+                <div class="form-group">
+                    <label for="weight">Peso (kg)</label>
+                    <input type="number" id="weight" placeholder="00.0" [(ngModel)]="usuario.peso" name="peso" [disabled]="!modoEdicao">
+                </div>
+
+                <div class="form-group">
+                    <label for="height">Altura (cm)</label>
+                    <input type="number" id="height" placeholder="000" [(ngModel)]="usuario.altura" name="altura" [disabled]="!modoEdicao">
+                </div>
+
+                <div class="form-group">
+                    <label for="imc">IMC</label>
+                    <input type="number" id="imc" placeholder="0" [(ngModel)]="usuario.imc" name="imc" [disabled]="!modoEdicao">
+                </div>
+
+                <!-- <div class="form-group full-width">
+                    <label for="goal">Objetivo Principal</label>
+                    <select id="goal" [(ngModel)]="user.goal" name="goal">
+                        <option value="perda_peso">Perda de Peso</option>
+                        <option value="ganho_massa">Ganho de Massa</option>
+                        <option value="manutencao">Manutenção</option>
+                        <option value="saude">Saúde e Bem-estar</option>
+                    </select>
+                </div> -->
+            </div>
+
+            <!-- Ação de Edição -->
+            <div class="profile-actions">
+                <button type="button" class="btn-profile btn-edit" (click)="editarPerfil()">
+                    {{ modoEdicao ? 'Cancelar Edição' : 'Editar Perfil' }}
+                </button>
+                <button type="button" class="btn-profile btn-save" (click)="salvarPerfil()">
+                    Salvar
+                </button>
+            </div>
+        </form>
+    </section>
+</main>
+
+<app-arnold-chat></app-arnold-chat>
+

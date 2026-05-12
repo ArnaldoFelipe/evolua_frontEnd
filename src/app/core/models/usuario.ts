@@ -16,3 +16,12 @@ export interface Usuario {
     dataNascimento: string;
     idade: number
 }
+
+export interface UsuarioRequest{
+    nome: string;
+    email: string;
+    senha: string;
+    peso: number;
+    altura: number;
+    dataNascimento: string;
+}

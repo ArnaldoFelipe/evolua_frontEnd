@@ -1,59 +1,4 @@
-<!-- Botão Hamburguer para Abrir Sidebar -->
-<button class="sidebar-toggle" (click)="toggleSideBar()" aria-label="Abrir menu">
-    <span class="toggle-icon">☰</span>
-</button>
-
-<!-- Overlay Escuro (para fechar a sidebar ao clicar fora) -->
-<div 
-class="sidebar-overlay"
-*ngIf="isSideBarOpen"
-(click)="toggleSideBar()">
-</div>
-
-<!-- Barra de Navegação Lateral -->
-<nav class="sidebar" [class.open]="isSideBarOpen">
-    <div class="sidebar-header">
-        <div class="sidebar-brand">
-            <span class="brand-icon">💪</span>
-            <span class="brand-text">Evolua</span>
-        </div>
-        <button class="sidebar-close" (click)="toggleSideBar()" aria-label="Fechar menu">×</button>
-    </div>
-
-    <ul class="sidebar-menu">
-        <li class="menu-item active">
-            <a href="#" class="menu-link">
-                <span class="menu-icon">🏠</span>
-                <span class="menu-text">Home</span>
-            </a>
-        </li>
-        <li class="menu-item">
-            <a routerLink="/treino" class="menu-link">
-                <span class="menu-icon">🏋️</span>
-                <span class="menu-text">Treino</span>
-            </a>
-        </li>
-        <li class="menu-item">
-            <a href="#" class="menu-link">
-                <span class="menu-icon">🥗</span>
-                <span class="menu-text">Dieta</span>
-            </a>
-        </li>
-        <li class="menu-item">
-            <a href="#" class="menu-link">
-                <span class="menu-icon">👤</span>
-                <span class="menu-text">Perfil</span>
-            </a>
-        </li>
-    </ul>
-
-    <div class="sidebar-footer">
-        <a class="logout-link" (click)="logout()">
-            <span class="menu-icon">🚪</span>
-            <span class="menu-text">Sair</span>
-        </a>
-    </div>
-</nav>
+<app-sidebar></app-sidebar>
 
 <main class="home-container">
     <!-- Seção de Saudação -->
@@ -102,62 +47,9 @@ class="sidebar-overlay"
         </div>
     </section>
 
-    <!-- Card de Destaque - Chat Arnold -->
-    <section class="arnold-section">
-        <div class="arnold-card">
-            <div class="arnold-avatar">
-                <span class="avatar-icon">💪</span>
-            </div>
-            <div class="arnold-content">
-                <h2 class="arnold-title">Arnold - Seu Assistente Fitness</h2>
-                <p class="arnold-description">
-                    Precisa de motivação ou tem dúvidas sobre seu treino? 
-                    Converse com o Arnold e tire suas dúvidas!
-                </p>
-                <button class="btn-arnold" (click)="toggleChat()">Abrir Chat</button>
-            </div>
-        </div>
-    </section>
+  
+    <app-arnold-chat></app-arnold-chat>
+    
 </main>
 
-<!-- Botão Flutuante do Arnold (Chat estilo Copilot) -->
-<div class="arnold-float-button">
-    <button class="arnold-trigger" (click)="toggleChat()" aria-label="Abrir Arnold">
-        <span class="trigger-icon">💪</span>
-    </button>
-</div>
 
-<!-- Container do Chat Arnold (inicialmente escondido) -->
-<div class="arnold-chat-container" [class.open]="isChatOpen">
-    <div class="chat-header">
-        <div class="chat-header-info">
-            <span class="chat-avatar">💪</span>
-            <div class="chat-header-text">
-                <h3>Arnold</h3>
-                <p>Seu Assistente Fitness</p>
-            </div>
-        </div>
-        <button class="chat-close" (click)="toggleChat()" aria-label="Fechar chat">×</button>
-    </div>
-    <div class="chat-messages">
-        <div 
-        *ngFor="let msg of mensagens" 
-        class="message" 
-        [ngClass]="msg.tipo === 'bot' ? 'bot-message': 'user-message'">
-            <span class="message-avatar">
-                {{ msg.tipo === 'bot' ? '💪' : '🧑' }}
-            </span>
-            <div class="message-content">
-                <p>{{msg.texto}}</p>
-            </div>
-        </div>
-    </div>
-    <div class="chat-input-area">
-        <input 
-        type="text"
-        [(ngModel)]="mensagem" 
-        class="chat-input" 
-        placeholder="Digite sua mensagem...">
-        <button class="chat-send" (click)="enviarMensagem()">Enviar</button>
-    </div>
-</div>

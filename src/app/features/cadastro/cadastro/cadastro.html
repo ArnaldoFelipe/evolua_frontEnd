@@ -1,0 +1,86 @@
+<main class="register-container">
+    <!-- Cabeçalho de Cadastro -->
+    <header class="register-header">
+        <h1 class="register-title">Criar Conta</h1>
+        <p class="register-subtitle">Junte-se a nós e comece sua jornada de saúde hoje mesmo.</p>
+    </header>
+
+    <!-- Card do Formulário de Cadastro -->
+    <section class="register-card">
+        <form class="register-form" [formGroup]="cadastroForm" (ngSubmit)="cadastrar()">
+            <div class="form-grid">
+                <!-- Informações de Acesso -->
+                <div class="form-group full-width">
+                    <label for="nome">Nome Completo</label>
+                    <input 
+                    type="text" 
+                    id="nome" 
+                    placeholder="Seu nome completo" 
+                    formControlName="nome" 
+                    name="nome" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input 
+                    type="email" 
+                    id="email" 
+                    placeholder="seu@email.com" 
+                    formControlName="email" 
+                    name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Senha</label>
+                    <input 
+                    type="password" 
+                    id="password" 
+                    placeholder="Crie uma senha forte" 
+                    formControlName="senha" 
+                    name="password" required>
+                </div>
+
+                <!-- Informações Físicas -->
+                <div class="form-group">
+                    <label for="peso">Peso (kg)</label>
+                    <input 
+                    type="number" 
+                    id="peso" 
+                    placeholder="00.0" 
+                    formControlName="peso" 
+                    name="peso">
+                </div>
+
+                <div class="form-group">
+                    <label for="altura">Altura (cm)</label>
+                    <input 
+                    type="number" 
+                    id="altura" 
+                    placeholder="000" 
+                    formControlName="altura" 
+                    name="altura">
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="dataNascimento">Data de Nascimento</label>
+                    <input 
+                    type="date" 
+                    id="dataNascimento" 
+                    formControlName="dataNascimento" 
+                    name="dataNascimento" required>
+                </div>
+            </div>
+
+            <!-- Ações de Cadastro -->
+            <div class="register-actions">
+                <button type="submit" class="btn-register" (click)="cadastrar()">
+                    Cadastrar Agora
+                </button>
+            </div>
+
+            <div class="register-footer">
+                <p>Já tem uma conta? <a routerLink="/login">Faça login aqui</a></p>
+            </div>
+        </form>
+    </section>
+</main>

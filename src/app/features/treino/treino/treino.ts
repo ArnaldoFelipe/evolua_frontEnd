@@ -3,10 +3,12 @@ import { TreinoService } from '../../../core/services/treino-service';
 import { DiaTreino, PlanoTreino } from '../../../core/models/treino.model';
 import { CommonModule } from '@angular/common';
 import { ChangeDetectorRef } from '@angular/core';
+import { Sidebar } from "../../../shared/components/sidebar/sidebar/sidebar";
+import { ArnoldChat } from "../../../shared/components/arnold/arnold-chat/arnold-chat";
 
 @Component({
   selector: 'app-treino',
-  imports: [CommonModule],
+  imports: [CommonModule, Sidebar, ArnoldChat],
   templateUrl: './treino.html',
   styleUrl: './treino.scss',
 })

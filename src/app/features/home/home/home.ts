@@ -5,35 +5,28 @@ import { CommonModule } from '@angular/common';
 import { AuthService } from '../../../core/services/auth';
 import { Router, RouterLink } from '@angular/router';
 import { ChangeDetectorRef } from '@angular/core';
-import { ArnoldService } from '../../../core/services/arnold-service';
 import { FormsModule } from '@angular/forms';
+import { ArnoldChat } from "../../../shared/components/arnold/arnold-chat/arnold-chat";
+import { Sidebar } from "../../../shared/components/sidebar/sidebar/sidebar";
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, FormsModule, RouterLink],
+  imports: [CommonModule, FormsModule, ArnoldChat, Sidebar],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
 export class Home implements OnInit{
 
+  isChatOpen = false;
   usuario?: Usuario;
   loading = true;
-  isSideBarOpen = false;
-  isChatOpen = false;
-  mensagem = '';
   erroMessage = '';
-  mensagens: {texto: string; tipo : 'user' | 'bot'}[] = [
-    {
-      texto: 'Olá! Sou o Arnold, seu assistente fitness! Como posso te ajudar hoje?',
-      tipo: 'bot'
-    }
-  ];
-
+  
   constructor(private usuarioService: UsuarioService,
               private authService: AuthService,
               private router: Router,
-              private cd: ChangeDetectorRef,
-              private arnoldService: ArnoldService){}
+              private cd: ChangeDetectorRef
+              ){}
 
   ngOnInit(): void{
     this.usuarioService.getUsuarioLogado().subscribe({
@@ -52,48 +45,7 @@ export class Home implements OnInit{
     });
   }
 
-  toggleSideBar(): void {
-    console.log('clicou');
-    this.isSideBarOpen = !this.isSideBarOpen;
-  }
-
   toggleChat(): void {
     this.isChatOpen = !this.isChatOpen;
-  }
-
-  logout(): void {
-    this.authService.logout();
-    this.router.navigate(['/login']);
-  }
-
-  enviarMensagem(): void{
-    if(!this.mensagem.trim()) return;
-
-    const texto = this.mensagem
-
-    this.mensagens.push({
-      texto,
-      tipo: 'user'
-    });
-
-    this.mensagem = '';
-
-    this.arnoldService.chat(texto).subscribe({
-      next: (res) => {
-        this.mensagens.push({
-          texto: res.mensagem,
-          tipo: 'bot'
-        });
-
-        this.cd.detectChanges();
-        console.log('Reposta completa', res)
-      },
-      error: ()=> {
-        this.mensagens.push({
-          texto: 'Erro ao falar com Arnold',
-          tipo: 'bot'
-        });
-      }
-    });
   }
 }

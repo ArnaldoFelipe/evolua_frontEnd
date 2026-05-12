@@ -1,0 +1,55 @@
+<app-sidebar></app-sidebar>
+
+<main class="diet-container">
+    <!-- Seção de Cabeçalho de Dieta -->
+    <header class="diet-header">
+        <h1 class="diet-greeting">Nutrição e Equilíbrio 🍎</h1>
+        <p class="diet-subtitle">Confira sua estratégia alimentar de hoje para alcançar seus objetivos.</p>
+        <h3>Objetivo <span class="objetivo">{{planoDieta?.objetivoFitness}}</span></h3>
+        <h4>Calorias Diarias: {{planoDieta?.caloriasDiarias}} kcal</h4>
+    </header>
+
+    <!-- Grade de Cards de Dieta (Refeições do Dia) -->
+    <section class="diet-grid">
+        <!-- Card de Refeição (Exemplo: Café da Manhã, Almoço, etc) -->
+        <div 
+        class="diet-card" 
+        *ngFor="let dia of planoDieta?.dias" 
+        (click)="toggleDiaAberto(dia)" 
+        [class.active]="diaAberto === dia">
+            
+            <div class="card-header">
+                <div class="meal-info">
+                    <span class="meal-time">{{dia.dia}}</span>
+                    <h3 class="meal-name">Plano do Dia</h3>
+                </div>
+            </div>
+
+            <!-- Detalhes da Dieta (Expandido/Lista de Alimentos) -->
+            <div 
+            class="diet-details" 
+            *ngIf="diaAberto === dia">
+                <!-- <h4 class="macro-summary">Total de Calorias <span>{{refeicao.totalCalorias}} kcal</span></h4> -->
+                <ul class="food-list">
+                    <li class="food-item" *ngFor="let refeicao of dia.refeicoes">
+                        <div class="food-info">
+                            <span class="food-name">{{refeicao.nome}}</span>
+                            <span class="food-specs">{{refeicao.tpRefeicao}} - {{refeicao.calorias}} kcal</span>
+                        </div>
+                        <span class="food-icon">🥗</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Estado Colapsado -->
+            <div 
+            class="diet-details-collapsed" 
+            *ngIf="diaAberto !== dia">
+                <p>Toque para ver as refeições</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<app-arnold-chat></app-arnold-chat>
+

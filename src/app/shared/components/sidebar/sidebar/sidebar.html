@@ -1,0 +1,56 @@
+<!-- Botão Hamburguer para Abrir Sidebar -->
+<button class="sidebar-toggle" (click)="toggleSideBar()" aria-label="Abrir menu">
+    <span class="toggle-icon">☰</span>
+</button>
+
+<!-- Overlay Escuro (para fechar a sidebar ao clicar fora) -->
+<div 
+class="sidebar-overlay"
+*ngIf="isSideBarOpen"
+(click)="toggleSideBar()">
+</div>
+
+<!-- Barra de Navegação Lateral -->
+<nav class="sidebar" [class.open]="isSideBarOpen">
+    <div class="sidebar-header">
+        <div class="sidebar-brand">
+            <span class="brand-icon"></span>
+            <span class="brand-text">Evolua</span>
+        </div>
+        <button class="sidebar-close" (click)="toggleSideBar()" aria-label="Fechar menu">×</button>
+    </div>
+
+    <ul class="sidebar-menu">
+        <li class="menu-item active">
+            <a routerLink="/home" class="menu-link">
+                <span class="menu-icon">🏠</span>
+                <span class="menu-text">Home</span>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a routerLink="/treino" class="menu-link">
+                <span class="menu-icon">🏋️</span>
+                <span class="menu-text">Treino</span>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a routerLink="/dieta" class="menu-link">
+                <span class="menu-icon">🥗</span>
+                <span class="menu-text">Dieta</span>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a routerLink="/perfil" class="menu-link">
+                <span class="menu-icon">👤</span>
+                <span class="menu-text">Perfil</span>
+            </a>
+        </li>
+    </ul>
+
+    <div class="sidebar-footer">
+        <a class="logout-link" (click)="logout()">
+            <span class="menu-icon">🚪</span>
+            <span class="menu-text">Sair</span>
+        </a>
+    </div>
+</nav>
